@@ -4,6 +4,13 @@ import { TechBar } from "../TechBar";
 export function Home() {
   const projects = [
     {
+      title: "Game Name",
+      description:
+        "Game Description",
+      role: "Role",
+      tech: ["Tech Stack"],
+    },
+    {
       title: "Trickbit",
       description:
         "A 2D platformer featuring pathfinding enemy AI and dynamic environmental interactions. Developed core systems including finite state machine behaviors, particle effects, physics-based movement, and progressive multi-layer level design.",
@@ -18,11 +25,18 @@ export function Home() {
       ],
     },
     {
-      title: "Clash of Clans Mod - UI Redesign",
+      title: "Game Name",
       description:
-        "A Clash of Clans game mod prototype built in Figma featuring a squadron-based combat system and enhanced player agency inspired by auto-chess strategy games. Designed and developed core systems including customizable unit targeting, offensive and defensive battle planning, and adaptive progression balancing for deeper, decision-driven gameplay.",
-      role: "UX/UI Designer and Project Coordinator",
-      tech: ["Figma", "Google Suites", "Miro"],
+        "Game Description",
+      role: "Role",
+      tech: ["Tech Stack"],
+    },
+    {
+      title: "Game Name",
+      description:
+        "Game Description",
+      role: "Role",
+      tech: ["Tech Stack"],
     },
     {
       title: "Game Name",

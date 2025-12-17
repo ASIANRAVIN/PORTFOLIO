@@ -24,6 +24,16 @@ export function Minis() {
       description: "Description",
       tech: "TypeScript, HTML/CSS, Leaflet",
     },
+    {
+      title: "Name",
+      description: "Description",
+      tech: "Tech",
+    },
+    {
+      title: "Name",
+      description: "Description",
+      tech: "Tech",
+    },
   ];
 
   return (

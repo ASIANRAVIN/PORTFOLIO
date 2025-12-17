@@ -1,4 +1,5 @@
 import { ProjectCard } from "../ProjectCard";
+import { TechBar } from "../TechBar";
 
 export function Home() {
   const projects = [
@@ -33,17 +34,16 @@ export function Home() {
   ];
 
   // Tech tiles: provide `img` for an image URL (absolute or from `public/`), and `href` to make the tile a link.
-  const techs = [
-    { name: "Phaser", img: "", href: "" },
-    { name: "JavaScript", img: "", href: "" },
-    { name: "HTML/CSS", img: "", href: "" },
-    { name: "Git", img: "", href: "" },
-    { name: "Figma", img: "", href: "" },
-    { name: "Tiled", img: "", href: "" },
-    { name: "React", img: "", href: "" },
-    { name: "Phaser2", img: "", href: "" },
-    { name: "ToolX", img: "", href: "" },
-    { name: "ToolY", img: "", href: "" },
+  const techIcons = [
+    { id: "phaser", name: "Phaser", img: "/tech-icons/phaser.png", href: "https://phaser.io/" },
+    { id: "javascript", name: "JavaScript", img: "/tech-icons/javascript.png", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { id: "html", name: "HTML/CSS", img: "/tech-icons/html-css.png", href: "https://developer.mozilla.org/en-US/docs/Web" },
+    { id: "figma", name: "Figma", img: "/tech-icons/figma.webp", href: "https://figma.com/" },
+    { id: "tiled", name: "Tiled", img: "/tech-icons/tiled.png", href: "https://www.mapeditor.org/" },
+    { id: "react", name: "React", img: "/tech-icons/react.png", href: "https://reactjs.org/" },
+    { id: "typescript", name: "TypeScript", img: "/tech-icons/typescript.jpg", href: "https://www.typescriptlang.org/" },
+    { id: "github", name: "GitHub", img: "/tech-icons/github.png", href: "https://github.com/" },
+    { id: "three", name: "Three.js", img: "/tech-icons/three.png", href: "https://threejs.org/" },
   ];
 
   const profileImage = "16.JPG";
@@ -81,38 +81,7 @@ export function Home() {
           <div className="bg-accent/5 border border-accent/10 rounded-lg p-6">
             <h3 className="text-lg font-medium mb-1">Technologies</h3>
             <p className="text-muted-foreground mb-4">Tools and technologies I commonly use</p>
-            <div
-              className="grid gap-4"
-              style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))' }}
-            >
-              {techs.map((t) => (
-                <div key={t.name} className="w-full">
-                  {t.href ? (
-                    <a href={t.href} target="_blank" rel="noreferrer" className="block">
-                      <div className="aspect-square rounded-md overflow-hidden shadow-sm">
-                        {t.img ? (
-                          <img src={t.img} alt={t.name} className="w-full h-full object-cover" />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-sm font-semibold" title={t.name}>
-                            {t.name}
-                          </div>
-                        )}
-                      </div>
-                    </a>
-                  ) : (
-                    <div className="aspect-square rounded-md overflow-hidden shadow-sm">
-                      {t.img ? (
-                        <img src={t.img} alt={t.name} className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-sm font-semibold" title={t.name}>
-                          {t.name}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+            <TechBar techIcons={techIcons} />
           </div>
         </div>
 

@@ -79,8 +79,7 @@ export function Home() {
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-8">
           <div className="bg-accent/5 border border-accent/10 rounded-lg p-6">
-            <h3 className="text-lg font-medium mb-1">Technologies</h3>
-            <p className="text-muted-foreground mb-4">Tools and technologies I commonly use</p>
+            <h3 className="text-lg font-medium mb-1">Technologies</h3>`
             <TechBar techIcons={techIcons} />
           </div>
         </div>

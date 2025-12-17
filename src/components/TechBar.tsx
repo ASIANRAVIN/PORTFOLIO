@@ -41,7 +41,8 @@ export function TechBar({ techIcons }: TechBarProps) {
                   rotate: {
                     duration: 1.2,
                     ease: "easeOut"
-                  }
+                  },
+                  opacity: { duration: 1, ease: [0,0,0,1] }
                 }}
                 // Hover effects
                 whileHover={{ 

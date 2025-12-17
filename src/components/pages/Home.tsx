@@ -38,10 +38,10 @@ export function Home() {
     { id: "phaser", name: "Phaser", img: "/tech-icons/phaser.png", href: "https://phaser.io/" },
     { id: "javascript", name: "JavaScript", img: "/tech-icons/javascript.png", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
     { id: "html", name: "HTML/CSS", img: "/tech-icons/html-css.png", href: "https://developer.mozilla.org/en-US/docs/Web" },
-    { id: "figma", name: "Figma", img: "/tech-icons/figma.webp", href: "https://figma.com/" },
+    { id: "figma", name: "Figma", img: "/tech-icons/figma.png", href: "https://figma.com/" },
     { id: "tiled", name: "Tiled", img: "/tech-icons/tiled.png", href: "https://www.mapeditor.org/" },
     { id: "react", name: "React", img: "/tech-icons/react.png", href: "https://reactjs.org/" },
-    { id: "typescript", name: "TypeScript", img: "/tech-icons/typescript.jpg", href: "https://www.typescriptlang.org/" },
+    { id: "typescript", name: "TypeScript", img: "/tech-icons/typescript.png", href: "https://www.typescriptlang.org/" },
     { id: "github", name: "GitHub", img: "/tech-icons/github.png", href: "https://github.com/" },
     { id: "three", name: "Three.js", img: "/tech-icons/three.png", href: "https://threejs.org/" },
   ];

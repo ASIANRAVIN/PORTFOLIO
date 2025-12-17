@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface TechBarProps {
   techIcons: Array<{
     id: string;
@@ -18,19 +20,51 @@ export function TechBar({ techIcons }: TechBarProps) {
               href={icon.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex items-center justify-center transition-all duration-300"
+              className="inline-flex items-center justify-center cursor-pointer"
               title={icon.name}
             >
-              {/* 16x16 circle container */}
-              <div className="w-16 h-16 rounded-full overflow-hidden shadow-xl bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg border-2 border-white/20 group-hover:border-accent/40 transition-all duration-300 group-hover:scale-125 group-hover:rotate-6 group-hover:shadow-2xl group-hover:z-10 flex items-center justify-center p-0">
-                <div className="w-full h-full flex items-center justify-center">
-                  <img
-                    src={icon.img}
-                    alt={icon.name}
-                    className="w-10 h-10 object-contain"
-                  />
-                </div>
-              </div>
+              <motion.div
+                className="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border-2 border-accent/30 shadow-lg flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 relative group"
+                // Initial state
+                initial={{ scale: 0, rotate: -90 }}
+                // Gravity effect
+                animate={{
+                  scale: 1,
+                  rotate: 1080
+                }}
+                // Gravity animation transition
+                transition={{
+                  scale: {
+                    duration: 0.8,
+                    ease: [0.12, 0.34, 0.67, 0.89]
+                  },
+                  rotate: {
+                    duration: 1.2,
+                    ease: "easeOut"
+                  }
+                }}
+                // Hover effects
+                whileHover={{ 
+                  scale: 1.15, 
+                  rotate: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 25
+                  }
+                }}
+                // On hover end: smoothly return to original scale
+                // Framer will animate back
+                whileTap={{ scale: 0.98 }}
+                style={{ transformOrigin: "center" }}
+                aria-hidden={false}
+              >
+                <img
+                  src={icon.img}
+                  alt={icon.name}
+                  className="w-6 h-6 object-contain pointer-events-none relative z-10 group-hover:brightness-150 transition-all duration-300"
+                />
+              </motion.div>
             </a>
           ))}
         </div>

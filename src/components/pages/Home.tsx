@@ -25,14 +25,20 @@ const ANIMATION_CONFIG = {
 
 const PROJECTS: Project[] = [
   {
-    title: "Game Name",
-    description: "Game Description",
-    role: "Role",
-    tech: ["Tech Stack"],
+    title: "Mini Mania",
+    description: "Mini Mania is an immersive 3D escape-style adventure where players solve physics-based puzzles, manage economy, and obtain keys by winning. Features implemented include persistent inventory systems, dynamic theming across environments, and accessibility features such as multi-language support and save states.",
+    role: "Tools Lead, System Developer",
+    tech: ["Three.js", 
+      "Cannon-es", 
+      "React Three Fiber", 
+      "Drei", 
+      "Zustand",
+      "Blender",
+    ],
   },
   {
     title: "Trickbit",
-    description: "A 2D platformer featuring pathfinding enemy AI and dynamic environmental interactions. Developed core systems including finite state machine behaviors, particle effects, physics-based movement, and progressive multi-layer level design.",
+    description: "A 2D platformer featuring pathfinding enemy AI and dynamic environmental interactions. Core systems developed include finite state machine behaviors, particle effects, physics-based movement, and progressive multi-layer level design.",
     role: "Solo Developer",
     tech: [
       "Phaser.js",
@@ -44,8 +50,8 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    title: "Game Name",
-    description: "Game Description",
+    title: "Token To-Go",
+    description: "Token To Go is a location-based puzzle game where players collect and combine tokens on a real-world map to reach target values through strategic movement and deterministic spawning. It features proximity-based interactions, single-slot inventory management, token crafting mechanics, and dual movement controls with comprehensive game state persistence.",
     role: "Role",
     tech: ["Tech Stack"],
   },

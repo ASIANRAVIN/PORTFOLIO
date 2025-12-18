@@ -55,18 +55,6 @@ const PROJECTS: Project[] = [
     role: "Role",
     tech: ["Tech Stack"],
   },
-  {
-    title: "Game Name",
-    description: "Game Description",
-    role: "Role",
-    tech: ["Tech Stack"],
-  },
-  {
-    title: "Game Name",
-    description: "Game Description",
-    role: "Role",
-    tech: ["Tech Stack"],
-  },
 ];
 
 const TECH_ICONS: TechIcon[] = [

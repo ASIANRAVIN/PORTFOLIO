@@ -3,6 +3,8 @@ import { TechBar } from "../TechBar";
 import { animated, useSpring, config } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
 
+const PROFILE_IMAGE = '/portrait.JPG';
+
 type Project = {
   title: string;
   description: string;
@@ -68,8 +70,6 @@ const TECH_ICONS: TechIcon[] = [
   { id: "github", name: "GitHub", img: "./tech-icons/github.png", href: "https://github.com/" },
   { id: "three", name: "Three.js", img: "./tech-icons/three.png", href: "https://threejs.org/" },
 ];
-
-const PROFILE_IMAGE = "16.JPG";
 
 // Separate component for each animated project card
 const AnimatedProjectCard = ({ project, index }: { project: Project; index: number }) => {

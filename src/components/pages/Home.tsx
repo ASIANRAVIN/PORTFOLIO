@@ -3,7 +3,7 @@ import { TechBar } from "../TechBar";
 import { animated, useSpring, config } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
 
-const PROFILE_IMAGE = '/portrait.jpg';
+const PROFILE_IMAGE = './tech-icons/portrait.jpg';
 
 type Project = {
   title: string;

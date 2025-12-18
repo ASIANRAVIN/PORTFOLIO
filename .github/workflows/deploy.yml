@@ -1,0 +1,69 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build application
+        run: npm run build
+      
+      - name: Debug build output
+        run: |
+          echo "=== Build Output Structure ==="
+          ls -la build/
+          echo "=== Checking index.html ==="
+          if [ -f "build/index.html" ]; then
+            echo "✓ index.html exists"
+            # Check if base path is correct in index.html
+            grep -n "portfolio" build/index.html || echo "Base path not found in HTML"
+          else
+            echo "✗ index.html NOT FOUND!"
+            find . -name "index.html" -type f
+          fi
+          echo "=== Assets folder ==="
+          ls -la build/assets/ 2>/dev/null || echo "No assets folder"
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

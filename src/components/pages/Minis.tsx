@@ -20,14 +20,14 @@ export function Minis() {
       tech: "TypeScript, HTML/CSS",
     },
     {
-      title: "World of Bits",
-      description: "Description",
-      tech: "TypeScript, HTML/CSS, Leaflet",
+      title: "Waat.io",
+      description: "A feature-rich drawing application built with TypeScript and HTML5 Canvas, featuring multiple brush tools, customizable stickers, and a complete undo/redo system implemented via the command pattern.",
+      tech: "TypeScript, HTML5 Canvas, CSS3",
     },
     {
-      title: "Name",
-      description: "Description",
-      tech: "Tech",
+      title: "UX/UI MOD - Clash of Clans",
+      description: "A prototype featuring a squadron-based combat system and enhanced player agency. Core systems include customizable unit targeting, offensive and defensive battle planning, and adaptive progression balancing.",
+      tech: "Figma, Google Suites, Miro",
     },
     {
       title: "Name",

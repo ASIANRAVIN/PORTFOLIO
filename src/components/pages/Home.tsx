@@ -47,15 +47,14 @@ const PROJECTS: Project[] = [
       "Tiled",
       "Javascript",
       "HTML/CSS",
-      "Git",
       "VS LiveServer",
     ],
   },
   {
     title: "Token To-Go",
     description: "Token To Go is a location-based puzzle game where players collect and combine tokens on a real-world map to reach target values through strategic movement and deterministic spawning. It features proximity-based interactions, single-slot inventory management, token crafting mechanics, and dual movement controls with comprehensive game state persistence.",
-    role: "Role",
-    tech: ["Tech Stack"],
+    role: "Solo Developer",
+    tech: ["TypeScript", "Leaflet", "HTML/CSS"],
   },
 ];
 

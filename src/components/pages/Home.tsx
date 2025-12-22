@@ -29,7 +29,7 @@ const PROJECTS: Project[] = [
   {
     title: "Mini Mania",
     description: "Mini Mania is an immersive 3D escape-style adventure where players solve physics-based puzzles, manage economy, and obtain keys by winning. Features implemented include persistent inventory systems, dynamic theming across environments, and accessibility features such as multi-language support and save states.",
-    role: "Tools Lead, System Developer",
+    role: "Tools Lead & System Developer",
     tech: ["Three.js", 
       "Cannon-es", 
       "React Three Fiber", 

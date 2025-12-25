@@ -1,11 +1,26 @@
+import { AnimatedPageWrapper } from "../AnimatedPageWrapper";
+import { AnimatedSection } from "../AnimatedSection";
+
 export function About() {
   return (
-    <div className="min-h-screen">
+    <AnimatedPageWrapper>
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <h1 className="text-primary mb-8">About Me</h1>
+        {/* Page Header */}
+        <AnimatedSection
+          delay={0}
+          fromOpacity={0.8}
+          className="mb-8"
+        >
+          <h1 className="text-primary mb-8">About Me</h1>
+        </AnimatedSection>
         
         <div className="space-y-8">
-          <section className="bg-card border border-border rounded-lg p-8">
+          {/* Background Section */}
+          <AnimatedSection
+            delay={100}
+            fromOpacity={0.9}
+            className="bg-card border border-border rounded-lg p-8 hover:shadow-md transition-shadow"
+          >
             <h2 className="text-primary mb-4">Background</h2>
             <p className="mb-4">
               I'm a 3rd year Computer Science Game Design major with a specialization in gameplay programming with additional practice in UX/UI design, level design, and narrative structures. My passion lies in creating 
@@ -14,9 +29,14 @@ export function About() {
             <p>
               Creeping upon these pursuits, I spend time editing and managing content for Slug Gaming at UC Santa Cruz, competing in the collegiate Rainbow 6 Siege scene alongside UCSC Amber, and creating Life, Skincare, & Cosmetics content on Instagram and TikTok.
             </p>
-          </section>
+          </AnimatedSection>
 
-          <section className="bg-card border border-border rounded-lg p-8">
+          {/* Skills Section */}
+          <AnimatedSection
+            delay={200}
+            fromOpacity={0.9}
+            className="bg-card border border-border rounded-lg p-8 hover:shadow-md transition-shadow"
+          >
             <h2 className="text-primary mb-4">Skills</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -42,18 +62,23 @@ export function About() {
                 </ul>
               </div>
             </div>
-          </section>
+          </AnimatedSection>
 
-          <section className="bg-card border border-border rounded-lg p-8">
+          {/* Philosophy Section */}
+          <AnimatedSection
+            delay={300}
+            fromOpacity={0.9}
+            className="bg-card border border-border rounded-lg p-8 hover:shadow-md transition-shadow"
+          >
             <h2 className="text-primary mb-4">Philosophy</h2>
             <p>
               I believe great gameplay emerges from the intersection of accessible technical implementation and 
               user-centered design. Every system should serve the player experience, and every line of code 
               should contribute to making the game more engaging, intuitive, and fun.
             </p>
-          </section>
+          </AnimatedSection>
         </div>
       </div>
-    </div>
+    </AnimatedPageWrapper>
   );
 }

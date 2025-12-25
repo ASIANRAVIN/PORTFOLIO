@@ -1,7 +1,21 @@
-import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { AnimatedPageWrapper } from "../AnimatedPageWrapper";
+import { AnimatedSection } from "../AnimatedSection";
+import { AnimatedList } from "../AnimatedList";
+
+// Define the Project type interface
+interface Project {
+  title: string;
+  role: string;
+  duration: string;
+  team: string;
+  description: string;
+  contributions: string[];
+  technologies: string[];
+  achievements: string;
+}
 
 export function Projects() {
-  const detailedProjects = [
+  const detailedProjects: Project[] = [
     {
       title: "Mini Mania",
       role: "Tools Lead & Systems Developer",
@@ -53,20 +67,28 @@ export function Projects() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <AnimatedPageWrapper>
       <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="mb-8">
+        {/* Page Header */}
+        <AnimatedSection
+          delay={0}
+          fromTransform="translateY(20px)"
+          className="mb-8"
+        >
           <h1 className="text-primary mb-2">Project Details</h1>
           <p className="text-muted-foreground">
             In-depth look at major game development projects with full context and contributions
           </p>
-        </div>
+        </AnimatedSection>
 
-        <div className="space-y-8">
-          {detailedProjects.map((project, index) => (
+        {/* Projects List with staggered animation */}
+        <AnimatedList
+          items={detailedProjects}
+          renderItem={(project: Project, index: number) => (
             <article
               key={index}
-              className="bg-card border border-border rounded-lg p-8"
+              className="bg-card border border-border rounded-lg p-8 mb-8 
+                         hover:border-primary/30 hover:shadow-lg transition-all duration-300"
             >
               <div className="mb-6">
                 <h2 className="text-primary mb-2">{project.title}</h2>
@@ -92,7 +114,7 @@ export function Projects() {
                 <div>
                   <h3 className="mb-2">Key Contributions</h3>
                   <ul className="space-y-2">
-                    {project.contributions.map((resp, idx) => (
+                    {project.contributions.map((resp: string, idx: number) => (
                       <li key={idx} className="text-foreground">
                         • {resp}
                       </li>
@@ -103,9 +125,9 @@ export function Projects() {
                 <div>
                   <h3 className="mb-2">Technologies Used</h3>
                   <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
+                    {project.technologies.map((tech: string, techIndex: number) => (
                       <span
-                        key={tech}
+                        key={techIndex}
                         className="px-3 py-1 bg-secondary/30 text-secondary-foreground rounded-full"
                       >
                         {tech}
@@ -119,9 +141,12 @@ export function Projects() {
                 </div>
               </div>
             </article>
-          ))}
-        </div>
+          )}
+          fromTransform="translateY(40px)"
+          staggerDelay={150}
+          className="space-y-8"
+        />
       </div>
-    </div>
+    </AnimatedPageWrapper>
   );
 }

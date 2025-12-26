@@ -1,6 +1,6 @@
-import { AnimatedPageWrapper } from "../AnimatedPageWrapper";
-import { AnimatedSection } from "../AnimatedSection";
-import { AnimatedList } from "../AnimatedList";
+import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
+import { AnimatedSection } from "../animation/AnimatedSection";
+import { AnimatedList } from "../animation/AnimatedList";
 
 // Define the Project type interface
 interface Project {

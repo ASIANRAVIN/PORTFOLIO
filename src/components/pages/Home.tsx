@@ -1,8 +1,8 @@
 import { ProjectCard } from "../ProjectCard";
 import { TechBar } from "../TechBar";
-import { AnimatedSection } from "../AnimatedSection";
-import { AnimatedList } from "../AnimatedList";
-import { AnimatedPageWrapper } from "../AnimatedPageWrapper";
+import { AnimatedSection } from "../animation/AnimatedSection";
+import { AnimatedList } from "../animation/AnimatedList";
+import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
 
 const PROFILE_IMAGE = './tech-icons/portrait.jpg';
 

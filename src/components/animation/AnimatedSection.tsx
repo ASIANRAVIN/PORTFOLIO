@@ -1,6 +1,6 @@
 import React from 'react';
 import { animated } from '@react-spring/web';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 export interface AnimatedSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

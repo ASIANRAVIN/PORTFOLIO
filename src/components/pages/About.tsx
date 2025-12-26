@@ -1,5 +1,5 @@
-import { AnimatedPageWrapper } from "../AnimatedPageWrapper";
-import { AnimatedSection } from "../AnimatedSection";
+import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
+import { AnimatedSection } from "../animation/AnimatedSection";
 
 export function About() {
   return (

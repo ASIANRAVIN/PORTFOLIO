@@ -1,6 +1,6 @@
 import React from 'react';
 import { animated } from '@react-spring/web';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 interface AnimatedListProps extends React.HTMLAttributes<HTMLDivElement> {
   items: any[];

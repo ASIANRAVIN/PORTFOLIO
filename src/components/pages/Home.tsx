@@ -4,7 +4,7 @@ import { AnimatedSection } from "../animation/AnimatedSection";
 import { AnimatedList } from "../animation/AnimatedList";
 import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
 
-const PROFILE_IMAGE = './tech-icons/portrait.jpg';
+const PROFILE_IMAGE = './tech-icons/portrait.png';
 
 type Project = {
   title: string;

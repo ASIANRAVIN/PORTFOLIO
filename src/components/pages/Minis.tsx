@@ -78,11 +78,12 @@ export function Minis() {
               <h3 className="text-primary mb-2">{project.title}</h3>
               <p className="text-foreground mb-3 text-sm leading-relaxed">{project.description}</p>
               
-              <div className="flex flex-wrap gap-1.5">
+              {/* Bubble-style technology tags - MATCHING PROJECTS PAGE */}
+              <div className="flex flex-wrap gap-2">
                 {(Array.isArray(project.tech) ? project.tech : [project.tech]).map((tech: string, techIndex: number) => (
                   <span
                     key={techIndex}
-                    className="px-2 py-1 bg-secondary/20 text-secondary-foreground text-xs rounded-md"
+                    className="px-3 py-1 bg-secondary/30 text-secondary-foreground rounded-full text-sm"
                   >
                     {tech}
                   </span>

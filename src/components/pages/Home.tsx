@@ -11,6 +11,10 @@ type Project = {
   description: string;
   role: string;
   tech: string[];
+  imageUrl?: string;
+  repoLink?: string;
+  demoLink?: string;
+  detailsLink?: string;
 };
 
 type TechIcon = {
@@ -26,18 +30,33 @@ const PROJECTS: Project[] = [
     description: "Mini Mania is an immersive 3D escape-style adventure where players solve physics-based puzzles, manage economy, and obtain keys by winning. Features implemented include persistent inventory systems, dynamic theming across environments, and accessibility features such as multi-language support and save states.",
     role: "Tools Lead & System Developer",
     tech: ["Three.js", "Cannon-es", "React Three Fiber", "Drei", "Zustand", "Blender"],
+    // ADD YOUR LINKS BELOW:
+    imageUrl: "./project-images/mini-mania.jpg", 
+    repoLink: "https://github.com/jnguy405/Mini-Mania", 
+    demoLink: "https://jnguy405.github.io/Mini-Mania/", 
+    detailsLink: "#projects", 
   },
   {
     title: "Trickbit",
     description: "A 2D platformer featuring pathfinding enemy AI and dynamic environmental interactions. Core systems developed include finite state machine behaviors, particle effects, physics-based movement, and progressive multi-layer level design.",
     role: "Solo Developer",
     tech: ["Phaser.js", "Tiled", "Javascript", "HTML/CSS", "VS LiveServer"],
+    // ADD YOUR LINKS BELOW:
+    imageUrl: "./project-images/trickbit.jpg", 
+    repoLink: "https://github.com/jnguy405/Trickbit",
+    demoLink: "https://jnguy405.github.io/Trickbit/", 
+    detailsLink: "#projects", 
   },
   {
     title: "Token To-Go",
     description: "Token To Go is a location-based puzzle game where players collect and combine tokens on a real-world map to reach target values through strategic movement and deterministic spawning. It features proximity-based interactions, single-slot inventory management, token crafting mechanics, and dual movement controls with comprehensive game state persistence.",
     role: "Solo Developer",
     tech: ["TypeScript", "Leaflet", "HTML/CSS"],
+    // ADD YOUR LINKS BELOW:
+    imageUrl: "./project-images/token-to-go.jpg",
+    repoLink: "https://github.com/jnguy405/TokenToGo", 
+    demoLink: "https://jnguy405.github.io/TokenToGo/", 
+    detailsLink: "#projects",
   },
 ];
 
@@ -116,7 +135,20 @@ export function Home() {
         {/* Projects List */}
         <AnimatedList
           items={PROJECTS}
-          renderItem={(project, index) => <ProjectCard key={index} {...project} />}
+          renderItem={(project, index) => (
+            <ProjectCard 
+              key={index} 
+              title={project.title}
+              description={project.description}
+              role={project.role}
+              tech={project.tech}
+              // Pass the new link props:
+              imageUrl={project.imageUrl}
+              repoLink={project.repoLink}
+              demoLink={project.demoLink}
+              detailsLink={project.detailsLink}
+            />
+          )}
           fromTransform="translateY(40px)"
           staggerDelay={100}
           className="flex flex-col gap-6"

@@ -13,6 +13,8 @@ interface Project {
   contributions: string[];
   technologies: string[];
   achievements: string;
+  images: string[]; 
+  imageAlt?: string; 
 }
 
 export function Projects() {
@@ -32,6 +34,13 @@ export function Projects() {
       ],
       technologies: ["TypeScript", "Vite", "GitHub Actions", "ESLint/Husky", "React", "Zustand", "Three.js", "Cannon-es"],
       achievements: "Established professional-grade development infrastructure supporting cross-functional collaboration and rapid iteration cycles.",
+      images: [
+        "./projects/minimania1.png",
+        "./projects/minimania2.png",
+        "./projects/minimania3.png",
+        "./projects/minimania4.png"
+      ],
+      imageAlt: "Mini Mania 3D puzzle platformer screenshots"
     },
     {
       title: "Trickbit",
@@ -48,6 +57,13 @@ export function Projects() {
       ],
       technologies: ["Phaser.js", "JavaScript", "Tiled", "HTML5/CSS", "VS Code Live Server"],
       achievements: "Delivered a complete 3-level platformer with progressive difficulty curve and polished player experience.",
+      images: [
+        "./projects/trickbit1.png",
+        "./projects/trickbit2.png",
+        "./projects/trickbit3.png",
+        "./projects/trickbit4.png"
+      ],
+      imageAlt: "Trickbit 2D platformer gameplay screenshots"
     },
     {
       title: "Token To-Go",
@@ -64,6 +80,13 @@ export function Projects() {
       ],
       technologies: ["TypeScript", "Leaflet.js", "HTML5 Geolocation API", "Design Patterns", "GitHub Pages"],
       achievements: "Successfully engineered a location-based puzzle game with deterministic replayability and memory-optimized architecture.",
+      images: [
+        "./projects/token1.png",
+        "./projects/token2.png",
+        "./projects/token3.png",
+        "./projects/token4.png"
+      ],
+      imageAlt: "Token To-Go location-based puzzle game interface"
     }
   ];
 
@@ -132,8 +155,44 @@ export function Projects() {
                   </div>
                 </div>
 
-                <div className="aspect-video bg-muted rounded-md mb-6 flex items-center justify-center">
-                  <div className="text-muted-foreground">Project Screenshot</div>
+                {/* Image Gallery - Replaces Project Screenshot */}
+                <div className="mb-6">
+                  <div className={`grid gap-4 ${project.images.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
+                    {project.images.map((image, imgIndex) => (
+                      <div 
+                        key={imgIndex}
+                        className="aspect-video rounded-md overflow-hidden bg-muted group relative"
+                      >
+                        <img 
+                          src={image} 
+                          alt={`${project.title} screenshot ${imgIndex + 1}`}
+                          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                          onError={(e) => {
+                            // Fallback if image fails to load
+                            const target = e.target as HTMLImageElement;
+                            target.src = `https://placehold.co/800x450/1a1a2e/6366f1?text=${encodeURIComponent(project.title)}+${imgIndex + 1}`;
+                            target.alt = `${project.title} placeholder image`;
+                          }}
+                        />
+                        {/* Image counter for multiple images */}
+                        {project.images.length > 1 && (
+                          <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                            {imgIndex + 1}/{project.images.length}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Single image variant without grid */}
+                  {project.images.length === 0 && (
+                    <div className="aspect-video bg-gradient-to-br from-muted/80 to-muted/40 rounded-md flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-lg mb-2 opacity-70">🖼️</div>
+                        <div className="text-muted-foreground">Project Screenshots Coming Soon</div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-6">

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Navigation } from './components/Navigation';
 import { Home } from './components/pages/Home';
-import { Projects } from './components/pages/Projects';
+import { Contact } from './components/pages/Contact';
 import { About } from './components/pages/About';
 import { Minis } from './components/pages/Minis';
+import { Projects } from './components/pages/Projects';
 
 export function App() {
   const [currentPage, setCurrentPage] = useState<string>("Home");
@@ -76,6 +77,8 @@ export function App() {
     switch (currentPage) {
       case "Home":
         return <Home />;
+      case "Contact":
+        return <Contact />;
       case "Projects":
         return <Projects />;
       case "About Me":

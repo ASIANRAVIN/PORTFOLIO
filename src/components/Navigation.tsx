@@ -5,7 +5,7 @@ interface NavigationProps {
 }
 
 export function Navigation({ currentPage, onNavigate, isLoading = false }: NavigationProps) {
-  const navItems = ["Home", "About Me", "Minis", "Projects"];
+  const navItems = ["Home", "Contact", "About Me", "Minis", "Projects"];
 
   const handleClick = (item: string) => {
     if (!isLoading) {

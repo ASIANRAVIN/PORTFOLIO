@@ -723,9 +723,9 @@
 :root {
   --font-family: "Roboto Serif", serif;
   --font-size: 16px;
-  --background: #f5f1ed;
+  --background: #e4e2e0;
   --foreground: #3d2817;
-  --card: #fff;
+  --card: #e6e3e2;
   --card-foreground: #3d2817;
   --popover: #fff;
   --popover-foreground: #3d2817;

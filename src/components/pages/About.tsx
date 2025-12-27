@@ -11,6 +11,10 @@ export function About() {
     { src: "/carousel/image4.png", alt: "Image 4" },
     { src: "/carousel/image5.png", alt: "Image 5" },
     { src: "/carousel/image6.png", alt: "Image 6" },
+    { src: "/carousel/image7.png", alt: "Image 7" },
+    { src: "/carousel/image8.png", alt: "Image 8" },
+    { src: "/carousel/image9.png", alt: "Image 9" },
+    { src: "/carousel/image10.png", alt: "Image 10" },
   ];
 
   return (

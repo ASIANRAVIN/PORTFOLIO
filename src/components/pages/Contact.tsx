@@ -122,6 +122,14 @@ export function Contact() {
                   </a>
                 </div>
 
+                {/* Optional Location */}
+                {CONTACT_DATA.location && (
+                  <div className="inline-flex items-center gap-2 text-lg">
+                    <span className="opacity-80">📍</span>
+                    <span>{CONTACT_DATA.location}</span>
+                  </div>
+                )}
+
                 {/* Social Links */}
                 {CONTACT_DATA.socialLinks && (
                   <div className="pt-4 flex gap-4">
@@ -178,44 +186,26 @@ export function Contact() {
             onSubmit={handleSubmit} 
             className="space-y-6"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label 
-                  htmlFor="firstName" 
-                  className="block text-sm font-medium text-foreground mb-2"
-                >
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="from_name"
-                  className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  placeholder="Enter your first name"
-                  required
-                  disabled={isSubmitting}
-                />
-              </div>
-
-              <div>
-                <label 
-                  htmlFor="lastName" 
-                  className="block text-sm font-medium text-foreground mb-2"
-                >
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="last_name"
-                  className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  placeholder="Enter your last name"
-                  required
-                  disabled={isSubmitting}
-                />
-              </div>
+            {/* Single Name Field */}
+            <div>
+              <label 
+                htmlFor="name" 
+                className="block text-sm font-medium text-foreground mb-2"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"  // Template variable: {{name}}
+                className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                placeholder="Enter your full name"
+                required
+                disabled={isSubmitting}
+              />
             </div>
 
+            {/* Email Field */}
             <div>
               <label 
                 htmlFor="email" 
@@ -226,7 +216,7 @@ export function Contact() {
               <input
                 type="email"
                 id="email"
-                name="reply_to"
+                name="email"  // Template variable: {{email}}
                 className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="you@example.com"
                 required
@@ -234,6 +224,25 @@ export function Contact() {
               />
             </div>
 
+            {/* Subject Field - NEW */}
+            <div>
+              <label 
+                htmlFor="subject" 
+                className="block text-sm font-medium text-foreground mb-2"
+              >
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"  // Template variable: {{subject}}
+                className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                placeholder="What is this regarding?"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            {/* Message Field */}
             <div>
               <label 
                 htmlFor="message" 
@@ -243,7 +252,7 @@ export function Contact() {
               </label>
               <textarea
                 id="message"
-                name="message"
+                name="message"  // Template variable: {{message}}
                 rows={6}
                 className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Type your message here..."

@@ -1,7 +1,18 @@
 import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
 import { AnimatedSection } from "../animation/AnimatedSection";
+import { ImageCarousel } from "../ImageCarousel";
 
 export function About() {
+    
+  const carouselImages = [
+    { src: "/carousel/image1.png", alt: "Image 1" },
+    { src: "/carousel/image2.png", alt: "Image 2" },
+    { src: "/carousel/image3.png", alt: "Image 3" },
+    { src: "/carousel/image4.png", alt: "Image 4" },
+    { src: "/carousel/image5.png", alt: "Image 5" },
+    { src: "/carousel/image6.png", alt: "Image 6" },
+  ];
+
   return (
     <AnimatedPageWrapper>
       <div className="max-w-4xl mx-auto px-6 py-12">
@@ -29,6 +40,28 @@ export function About() {
             <p>
               Creeping upon these pursuits, I spend time editing and managing content for Slug Gaming at UC Santa Cruz, competing in the collegiate Rainbow 6 Siege scene alongside UCSC Amber, and creating Life, Skincare, & Cosmetics content on Instagram and TikTok.
             </p>
+          </AnimatedSection>
+
+          {/* Carousel Section */}
+          <AnimatedSection
+            delay={50}
+            fromOpacity={0.9}
+            className="bg-card border border-border rounded-lg hover:shadow-md transition-shadow overflow-hidden"
+          >
+            <div
+              className="flex justify-center"
+              style={{
+                height: 500,
+                minHeight: 800,
+                maxHeight: 800,
+              }}
+            >
+              <ImageCarousel 
+                images={carouselImages}
+                autoPlayInterval={3000}
+                showControls={true}
+              />
+            </div>
           </AnimatedSection>
 
           {/* Skills Section */}

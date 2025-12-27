@@ -3,8 +3,12 @@ import { TechBar } from "../TechBar";
 import { AnimatedSection } from "../animation/AnimatedSection";
 import { AnimatedList } from "../animation/AnimatedList";
 import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
+import { FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
 
 const PROFILE_IMAGE = './tech-icons/portrait.png';
+const GITHUB_LINK = "https://github.com/jnguy405";
+const LINKEDIN_LINK = "https://www.linkedin.com/in/jenalee-nguyen-195624314/";
+const RESUME_LINK = "https://docs.google.com/document/d/1d9D05vtv1GzTSOcKVSUvNU3i3A9ZpwDsu5yUtoDbTkY/edit?usp=sharing";
 
 type Project = {
   title: string;
@@ -98,7 +102,38 @@ export function Home() {
               
               <div className="text-right">
                 <h1 className="mb-2">Jenalee Nguyen</h1>
-                <p className="text-xl opacity-90">Junior Gameplay Developer</p>
+                <p className="text-xl opacity-90 mb-4">Junior Gameplay Developer</p>
+                
+                {/* Add social icons here */}
+                <div className="flex justify-end gap-4">
+                  <a
+                    href={GITHUB_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover:scale-110"
+                    aria-label="GitHub Profile"
+                  >
+                    <FaGithub className="w-6 h-6" />
+                  </a>
+                  <a
+                    href={LINKEDIN_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover:scale-110"
+                    aria-label="LinkedIn Profile"
+                  >
+                    <FaLinkedin className="w-6 h-6" />
+                  </a>
+                  <a
+                    href={RESUME_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover:scale-110"
+                    aria-label="Download Resume"
+                  >
+                    <FaFilePdf className="w-6 h-6" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

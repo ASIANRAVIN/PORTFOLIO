@@ -99,62 +99,80 @@ export function Contact() {
         <div className="max-w-7xl mx-auto">
           <div className="ml-[2%]">
             <div className="max-w-2xl">
-              <h1 className="mb-4">Get in Touch</h1>
-              <p className="text-xl opacity-90 mb-4">
-                I'd like to hear from you!
+              <div style={{ fontSize: '3.5rem', lineHeight: '1.2' }}>
+                <h1 className="mb-6 font-bold">Get in Touch</h1>
+              </div>
+              <p className="text-xl md:text-2xl opacity-90 mb-4">
+                I'd love to hear from you!
               </p>
               <p className="text-lg opacity-80">
-                If you have any inquiries or just want to say hi, please use the contact form!
+                Whether you have inquiries, collaboration ideas, or just want to say hi — don't hesitate to reach out!
               </p>
               
-              {/* Contact Information */}
-              <div className="mt-6 pt-6 border-t border-accent/20 space-y-4">
-                {/* Email Link */}
-                <div>
-                  <a 
-                    href={`mailto:${CONTACT_DATA.email}`} 
-                    className="inline-flex items-center gap-2 text-lg hover:text-accent transition-colors"
-                  >
-                    <span className="opacity-80">📧</span>
-                    <span className="underline decoration-accent/50 hover:decoration-accent">
-                      {CONTACT_DATA.email}
-                    </span>
-                  </a>
+              {/* Contact Information Card */}
+              <div className="mt-8 pt-8 border-t border-accent/20">
+                <div className="bg-accent/5 border border-accent/10 rounded-lg p-6">
+                  <h3 className="text-lg font-medium text-primary-foreground mb-4">Contact Information</h3>
+                  
+                  <div className="space-y-4">
+                    {/* Email Link */}
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                        <span className="text-xl">📧</span>
+                      </div>
+                      <div>
+                        <p className="text-sm text-primary-foreground/80">Email me at</p>
+                        <a 
+                          href={`mailto:${CONTACT_DATA.email}`} 
+                          className="text-lg hover:text-accent transition-colors font-medium"
+                        >
+                          {CONTACT_DATA.email}
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Location */}
+                    {CONTACT_DATA.location && (
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                          <span className="text-xl">📍</span>
+                        </div>
+                        <div>
+                          <p className="text-sm text-primary-foreground/80">Based in</p>
+                          <p className="text-lg font-medium text-primary-foreground">{CONTACT_DATA.location}</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Social Links */}
+                    {CONTACT_DATA.socialLinks && (
+                      <div className="flex items-center gap-3 pt-2">
+                        <div className="flex gap-4">
+                          {CONTACT_DATA.socialLinks.github && (
+                            <a 
+                              href={CONTACT_DATA.socialLinks.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-background border border-accent/20 rounded-lg hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 text-foreground"
+                              >
+                              <span className="font-medium">GitHub</span>
+                            </a>
+                          )}
+                          {CONTACT_DATA.socialLinks.linkedin && (
+                            <a 
+                              href={CONTACT_DATA.socialLinks.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-background border border-accent/20 rounded-lg hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 text-foreground"
+                              >
+                              <span className="font-medium">LinkedIn</span>
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-
-                {/* Optional Location */}
-                {CONTACT_DATA.location && (
-                  <div className="inline-flex items-center gap-2 text-lg">
-                    <span className="opacity-80">📍</span>
-                    <span>{CONTACT_DATA.location}</span>
-                  </div>
-                )}
-
-                {/* Social Links */}
-                {CONTACT_DATA.socialLinks && (
-                  <div className="pt-4 flex gap-4">
-                    {CONTACT_DATA.socialLinks.github && (
-                      <a 
-                        href={CONTACT_DATA.socialLinks.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-base hover:text-accent transition-colors"
-                      >
-                        <span>GitHub</span>
-                      </a>
-                    )}
-                    {CONTACT_DATA.socialLinks.linkedin && (
-                      <a 
-                        href={CONTACT_DATA.socialLinks.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-base hover:text-accent transition-colors"
-                      >
-                        <span>LinkedIn</span>
-                      </a>
-                    )}
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -163,121 +181,159 @@ export function Contact() {
 
       {/* Contact Form Section */}
       <main className="max-w-7xl mx-auto px-6 py-12">
+        {/* Status Messages Card */}
+        {submitStatus !== 'idle' && (
+          <AnimatedSection
+            delay={50}
+            fromTransform="translateY(20px)"
+            className="mb-8"
+          >
+            <div className={`p-6 rounded-lg border ${
+              submitStatus === 'success' 
+                ? "bg-green-100 border-green-400 text-green-700" 
+                : "bg-red-100 border-red-400 text-red-700"
+            }`}>
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">{submitStatus === 'success' ? '✅' : '❌'}</span>
+                <p className="font-medium">{statusMessage}</p>
+              </div>
+            </div>
+          </AnimatedSection>
+        )}
+
+        {/* Form Card */}
         <AnimatedSection
           delay={100}
           fromTransform="translateY(30px)"
-          className="max-w-2xl"
         >
-          {/* Status Messages */}
-          {submitStatus === 'success' && (
-            <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg animate-fade-in">
-              {statusMessage}
-            </div>
-          )}
-          
-          {submitStatus === 'error' && (
-            <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg animate-fade-in">
-              {statusMessage}
-            </div>
-          )}
-
-          <form 
-            ref={formRef} 
-            onSubmit={handleSubmit} 
-            className="space-y-6"
-          >
-            {/* Single Name Field */}
-            <div>
-              <label 
-                htmlFor="name" 
-                className="block text-sm font-medium text-foreground mb-2"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"  // Template variable: {{name}}
-                className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                placeholder="Enter your full name"
-                required
-                disabled={isSubmitting}
-              />
+          <div className="bg-accent/5 border border-accent/10 rounded-lg p-8">
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold text-primary mb-2">Send me a message</h2>
+              <p className="text-muted-foreground">
+                Fill out the form below and I'll get back to you as soon as possible
+              </p>
             </div>
 
-            {/* Email Field */}
-            <div>
-              <label 
-                htmlFor="email" 
-                className="block text-sm font-medium text-foreground mb-2"
-              >
-                Email <span className="text-accent">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"  // Template variable: {{email}}
-                className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                placeholder="you@example.com"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
+            <form 
+              ref={formRef} 
+              onSubmit={handleSubmit} 
+              className="space-y-8"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Name Field */}
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="name" 
+                    className="block text-sm font-medium text-foreground"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="text-accent">👤</span>
+                      Name
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:border-accent/30 text-foreground"
+                    placeholder="Your full name"
+                    required
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-            {/* Subject Field - NEW */}
-            <div>
-              <label 
-                htmlFor="subject" 
-                className="block text-sm font-medium text-foreground mb-2"
-              >
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"  // Template variable: {{subject}}
-                className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                placeholder="What is this regarding?"
-                disabled={isSubmitting}
-              />
-            </div>
+                {/* Email Field */}
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="email" 
+                    className="block text-sm font-medium text-foreground"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="text-accent">✉️</span>
+                      Email <span className="text-accent text-lg">*</span>
+                    </span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:border-accent/30 text-foreground"
+                    placeholder="you@example.com"
+                    required
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
 
-            {/* Message Field */}
-            <div>
-              <label 
-                htmlFor="message" 
-                className="block text-sm font-medium text-foreground mb-2"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"  // Template variable: {{message}}
-                rows={6}
-                className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-                placeholder="Type your message here..."
-                required
-                disabled={isSubmitting}
-              />
-            </div>
+              {/* Subject Field */}
+              <div className="space-y-2">
+                <label 
+                  htmlFor="subject" 
+                  className="block text-sm font-medium text-foreground"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="text-accent">📋</span>
+                    Subject
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:border-accent/30 text-foreground"
+                  placeholder="What would you like to discuss?"
+                  disabled={isSubmitting}
+                />
+              </div>
 
-            <div className="pt-4">
-              <button
+              {/* Message Field */}
+              <div className="space-y-2">
+                <label 
+                  htmlFor="message" 
+                  className="block text-sm font-medium text-foreground"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="text-accent">💬</span>
+                    Message
+                  </span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={6}
+                  className="w-full px-4 py-3 bg-background border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed hover:border-accent/30 text-foreground"
+                  placeholder="Tell me about your project, question, or just say hello..."
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+
+            {/* Submit Button */}
+            <div className="pt-6">
+                <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:active:scale-100"
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"></span>
-                    Sending...
-                  </span>
-                ) : (
-                  "Send"
-                )}
-              </button>
+                style={{
+                    padding: '12px 32px',
+                    backgroundColor: 'var(--primary)',
+                    color: 'var(--primary-foreground)',
+                    borderRadius: 'var(--radius)',
+                    fontWeight: '500',
+                    fontSize: '1rem',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                }}
+                onMouseOver={e => e.currentTarget.style.opacity = '0.9'}
+                onMouseOut={e => e.currentTarget.style.opacity = '1'}
+                onMouseDown={e => e.currentTarget.style.transform = 'scale(0.98)'}
+                onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                {isSubmitting ? "Sending..." : "Send"}
+                </button>
             </div>
-          </form>
+            </form>
+          </div>
         </AnimatedSection>
       </main>
     </AnimatedPageWrapper>

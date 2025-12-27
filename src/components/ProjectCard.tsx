@@ -21,6 +21,18 @@ export function ProjectCard({
   demoLink = "#",
   detailsLink = "#" 
 }: ProjectCardProps) {
+  
+  const handleDetailsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    if (detailsLink && detailsLink !== "#") {
+      // Dispatch custom event for navigation
+      window.dispatchEvent(new CustomEvent('navigate', { 
+        detail: detailsLink 
+      }));
+    }
+  };
+
   return (
     <div className="w-full bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow">
       <div className="grid md:grid-cols-[300px_1fr] gap-6 p-6">
@@ -31,9 +43,18 @@ export function ProjectCard({
               src={imageUrl}
               alt={title}
               className="w-full h-full object-cover"
+              fallback={
+                <div className="text-muted-foreground p-4 text-center">
+                  <div className="text-3xl mb-2">🎮</div>
+                  <div>{title} Thumbnail</div>
+                </div>
+              }
             />
           ) : (
-            <div className="text-muted-foreground">Game Thumbnail</div>
+            <div className="text-muted-foreground p-4 text-center">
+              <div className="text-3xl mb-2">🎮</div>
+              <div>Game Thumbnail</div>
+            </div>
           )}
         </div>
         
@@ -87,9 +108,14 @@ export function ProjectCard({
               </svg>
             </a>
 
-            <a
-              href={detailsLink}
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors hover:scale-105 active:scale-95"
+            <button
+              onClick={handleDetailsClick}
+              disabled={detailsLink === "#"}
+              className={`flex items-center justify-center w-12 h-12 rounded-full transition-all hover:scale-105 active:scale-95 ${
+                detailsLink === "#" 
+                  ? "bg-secondary/10 text-muted-foreground cursor-not-allowed" 
+                  : "bg-secondary/20 hover:bg-secondary/30 cursor-pointer"
+              }`}
               title="Project Details"
             >
               {/* Info icon */}
@@ -98,7 +124,7 @@ export function ProjectCard({
                 <path d="M12 16V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M12 8H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>

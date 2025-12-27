@@ -1,31 +1,39 @@
-import { useState } from "react";
+// ImageWithFallback.tsx
+import { useState, ReactNode } from 'react';
 
 interface ImageWithFallbackProps {
-  src?: string;
-  alt?: string;
+  src: string;
+  alt: string;
   className?: string;
+  fallback?: ReactNode;
+  onError?: () => void;
 }
 
-export function ImageWithFallback({ src, alt = "", className }: ImageWithFallbackProps) {
+export function ImageWithFallback({ 
+  src, 
+  alt, 
+  className = '', 
+  fallback,
+  onError 
+}: ImageWithFallbackProps) {
   const [hasError, setHasError] = useState(false);
 
-  if (!src || hasError) {
-    return (
-      <div className={`w-full h-full bg-muted flex items-center justify-center ${className ?? ""}`}>
-        <span className="text-muted-foreground">{alt || "No image"}</span>
-      </div>
-    );
+  const handleError = () => {
+    setHasError(true);
+    onError?.();
+  };
+
+  if (hasError && fallback) {
+    return <>{fallback}</>;
   }
 
   return (
-    // eslint-disable-next-line jsx-a11y/alt-text
     <img
       src={src}
       alt={alt}
       className={className}
-      onError={() => setHasError(true)}
+      onError={handleError}
+      loading="lazy"
     />
   );
 }
-
-export default ImageWithFallback;

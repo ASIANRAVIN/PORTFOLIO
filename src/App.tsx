@@ -1,114 +1,100 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Navigation } from "./components/Navigation";
-import { Home } from "./components/pages/Home";
-import { About } from "./components/pages/About";
-import { Minis } from "./components/pages/Minis";
-import { Projects } from "./components/pages/Projects";
+import { useState, useEffect } from 'react';
+import { Navigation } from './components/Navigation';
+import { Home } from './components/pages/Home';
+import { Projects } from './components/pages/Projects';
+import { About } from './components/pages/About';
+import { Minis } from './components/pages/Minis';
 
-const pageEnter = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-};
+export function App() {
+  const [currentPage, setCurrentPage] = useState<string>("Home");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [pendingHash, setPendingHash] = useState<string | null>(null);
 
-// Save scroll positions per page
-const scrollPositions: Record<string, number> = {};
-
-export default function App() {
-  const [currentPage, setCurrentPage] = useState("Home");
-
-  // Custom navigation handler
-  const handleNavigation = (page: string) => {
-    // Save current scroll position before leaving
-    scrollPositions[currentPage] = window.scrollY;
+  const handleNavigate = (page: string) => {
+    setIsLoading(true);
     
-    // Scroll to top for the new page
+    if (page.includes('#')) {
+      const [pageName, hash] = page.split('#');
+      setCurrentPage(pageName);
+      setPendingHash(hash);
+    } else {
+      setCurrentPage(page);
+      setPendingHash(null);
+    }
+    
+    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
-    // Update page
-    setCurrentPage(page);
+    // Simulate loading delay
+    setTimeout(() => setIsLoading(false), 300);
   };
 
-  // Handle page load and restoration
+  // Handle hash scrolling after Projects component mounts
   useEffect(() => {
-    // On component mount, try to restore scroll position
-    const savedScroll = scrollPositions[currentPage];
-    
-    if (savedScroll !== undefined) {
-      // Small delay to ensure DOM is ready
-      setTimeout(() => {
-        window.scrollTo({ top: savedScroll, behavior: 'auto' });
-      }, 50);
-    } else {
-      // If no saved position, scroll to top
-      window.scrollTo(0, 0);
+    if (currentPage === "Projects" && pendingHash) {
+      const scrollToElement = () => {
+        const element = document.getElementById(pendingHash);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+        setPendingHash(null);
+      };
+
+      // Delay to ensure DOM is rendered
+      const timer = setTimeout(scrollToElement, 500);
+      return () => clearTimeout(timer);
     }
+  }, [currentPage, pendingHash]);
 
-    // Save scroll position before page unload/refresh
-    const handleBeforeUnload = () => {
-      scrollPositions[currentPage] = window.scrollY;
-      // Optional: Save to localStorage for persistence across page refresh
-      localStorage.setItem('scrollPositions', JSON.stringify(scrollPositions));
-      localStorage.setItem('currentPage', currentPage);
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, [currentPage]);
-
-  // Load saved positions from localStorage on initial mount
+  // Listen for custom navigation events from ProjectCard
   useEffect(() => {
-    const savedScrollPositions = localStorage.getItem('scrollPositions');
-    const savedPage = localStorage.getItem('currentPage');
-    
-    if (savedScrollPositions) {
-      try {
-        const parsed = JSON.parse(savedScrollPositions);
-        Object.assign(scrollPositions, parsed);
-      } catch (e) {
-        console.error('Failed to parse saved scroll positions:', e);
+    const handleCustomNavigate = (event: CustomEvent) => {
+      if (event.detail && typeof event.detail === 'string') {
+        handleNavigate(event.detail);
       }
-    }
-    
-    if (savedPage && savedPage !== currentPage) {
-      setCurrentPage(savedPage);
-    }
+    };
+
+    window.addEventListener('navigate' as any, handleCustomNavigate);
+    return () => window.removeEventListener('navigate' as any, handleCustomNavigate);
   }, []);
 
   const renderPage = () => {
+    if (isLoading) {
+      return (
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Loading...</p>
+          </div>
+        </div>
+      );
+    }
+
     switch (currentPage) {
       case "Home":
         return <Home />;
+      case "Projects":
+        return <Projects />;
       case "About Me":
         return <About />;
       case "Minis":
         return <Minis />;
-      case "Projects":
-        return <Projects />;
       default:
         return <Home />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation 
         currentPage={currentPage} 
-        onNavigate={handleNavigation}
+        onNavigate={handleNavigate}
+        isLoading={isLoading}
       />
-
-      <motion.div
-        key={currentPage}
-        initial="initial"
-        animate="animate"
-        variants={pageEnter}
-        className="min-h-screen"
-      >
-        {renderPage()}
-      </motion.div>
+      {renderPage()}
     </div>
   );
 }

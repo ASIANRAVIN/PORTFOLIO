@@ -34,29 +34,27 @@ const PROJECTS: Project[] = [
     imageUrl: "./project-images/mini-mania.jpg", 
     repoLink: "https://github.com/jnguy405/Mini-Mania", 
     demoLink: "https://jnguy405.github.io/Mini-Mania/", 
-    detailsLink: "#projects", 
+    detailsLink: "Projects#mini-mania", 
   },
   {
     title: "Trickbit",
     description: "A 2D platformer featuring pathfinding enemy AI and dynamic environmental interactions. Core systems developed include finite state machine behaviors, particle effects, physics-based movement, and progressive multi-layer level design.",
     role: "Solo Developer",
     tech: ["Phaser.js", "Tiled", "Javascript", "HTML/CSS", "VS LiveServer"],
-    // ADD YOUR LINKS BELOW:
     imageUrl: "./project-images/trickbit.jpg", 
     repoLink: "https://github.com/jnguy405/Trickbit",
     demoLink: "https://jnguy405.github.io/Trickbit/", 
-    detailsLink: "#projects", 
+    detailsLink: "Projects#trickbit", 
   },
   {
     title: "Token To-Go",
     description: "Token To Go is a location-based puzzle game where players collect and combine tokens on a real-world map to reach target values through strategic movement and deterministic spawning. It features proximity-based interactions, single-slot inventory management, token crafting mechanics, and dual movement controls with comprehensive game state persistence.",
     role: "Solo Developer",
     tech: ["TypeScript", "Leaflet", "HTML/CSS"],
-    // ADD YOUR LINKS BELOW:
     imageUrl: "./project-images/token-to-go.jpg",
     repoLink: "https://github.com/jnguy405/TokenToGo", 
     demoLink: "https://jnguy405.github.io/TokenToGo/", 
-    detailsLink: "#projects",
+    detailsLink: "Projects#token-to-go",
   },
 ];
 

@@ -1,28 +1,41 @@
 interface NavigationProps {
   currentPage: string;
   onNavigate: (page: string) => void;
+  isLoading?: boolean;
 }
 
-export function Navigation({ currentPage, onNavigate }: NavigationProps) {
+export function Navigation({ currentPage, onNavigate, isLoading = false }: NavigationProps) {
   const navItems = ["Home", "About Me", "Minis", "Projects"];
+
+  const handleClick = (item: string) => {
+    if (!isLoading) {
+      onNavigate(item);
+    }
+  };
 
   return (
     <nav className="w-full bg-card border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-primary cursor-pointer" onClick={() => onNavigate("Home")}>
+          <h1 
+            className={`text-primary cursor-pointer transition-opacity ${
+              isLoading ? 'opacity-70' : 'hover:opacity-80'
+            }`}
+            onClick={() => handleClick("Home")}
+          >
             Portfolio
           </h1>
           <ul className="flex gap-8">
             {navItems.map((item) => (
               <li key={item}>
                 <button
-                  onClick={() => onNavigate(item)}
-                  className={`transition-colors hover:text-primary ${
+                  onClick={() => handleClick(item)}
+                  disabled={isLoading}
+                  className={`transition-all duration-200 ${
                     currentPage === item
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  }`}
+                      ? "text-primary font-medium"
+                      : "text-muted-foreground hover:text-primary"
+                  } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   {item}
                 </button>

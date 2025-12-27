@@ -1,6 +1,7 @@
 import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
 import { AnimatedSection } from "../animation/AnimatedSection";
 import { AnimatedList } from "../animation/AnimatedList";
+import { useEffect } from 'react';
 
 // Define the Project type interface
 interface Project {
@@ -66,6 +67,30 @@ export function Projects() {
     }
   ];
 
+  // Handle direct URL access with hash
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          // Small delay to ensure animations are complete
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 300);
+        }
+      }
+    };
+
+    handleHashNavigation();
+    
+    // Also handle hash changes
+    const handleHashChange = () => handleHashNavigation();
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
     <AnimatedPageWrapper>
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -81,67 +106,74 @@ export function Projects() {
           </p>
         </AnimatedSection>
 
-        {/* Projects List with staggered animation */}
+        {/* Projects List */}
         <AnimatedList
           items={detailedProjects}
-          renderItem={(project: Project, index: number) => (
-            <article
-              key={index}
-              className="bg-card border border-border rounded-lg p-8 mb-8 
-                         hover:border-primary/30 hover:shadow-lg transition-all duration-300"
-            >
-              <div className="mb-6">
-                <h2 className="text-primary mb-2">{project.title}</h2>
-                <div className="flex flex-wrap gap-4 text-muted-foreground">
-                  <span>{project.role}</span>
-                  <span>•</span>
-                  <span>{project.duration}</span>
-                  <span>•</span>
-                  <span>{project.team}</span>
-                </div>
-              </div>
-
-              <div className="aspect-video bg-muted rounded-md mb-6 flex items-center justify-center">
-                <div className="text-muted-foreground">Project Screenshot</div>
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="mb-2">Overview</h3>
-                  <p className="text-foreground">{project.description}</p>
-                </div>
-
-                <div>
-                  <h3 className="mb-2">Key Contributions</h3>
-                  <ul className="space-y-2">
-                    {project.contributions.map((resp: string, idx: number) => (
-                      <li key={idx} className="text-foreground">
-                        • {resp}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="mb-2">Technologies Used</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech: string, techIndex: number) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-secondary/30 text-secondary-foreground rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+          renderItem={(project: Project, index: number) => {
+            // Generate consistent ID (same as in Home.tsx)
+            const projectId = project.title.toLowerCase().replace(/\s+/g, '-');
+            
+            return (
+              <article
+                id={projectId}
+                key={index}
+                className="bg-card border border-border rounded-lg p-8 mb-8 
+                         hover:border-primary/30 hover:shadow-lg transition-all duration-300
+                         scroll-mt-20"
+              >
+                <div className="mb-6">
+                  <h2 className="text-primary mb-2">{project.title}</h2>
+                  <div className="flex flex-wrap gap-4 text-muted-foreground">
+                    <span>{project.role}</span>
+                    <span>•</span>
+                    <span>{project.duration}</span>
+                    <span>•</span>
+                    <span>{project.team}</span>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-border">
-                  <p className="text-muted-foreground italic">{project.achievements}</p>
+                <div className="aspect-video bg-muted rounded-md mb-6 flex items-center justify-center">
+                  <div className="text-muted-foreground">Project Screenshot</div>
                 </div>
-              </div>
-            </article>
-          )}
+
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="mb-2">Overview</h3>
+                    <p className="text-foreground">{project.description}</p>
+                  </div>
+
+                  <div>
+                    <h3 className="mb-2">Key Contributions</h3>
+                    <ul className="space-y-2">
+                      {project.contributions.map((resp: string, idx: number) => (
+                        <li key={idx} className="text-foreground">
+                          • {resp}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="mb-2">Technologies Used</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech: string, techIndex: number) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-secondary/30 text-secondary-foreground rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-border">
+                    <p className="text-muted-foreground italic">{project.achievements}</p>
+                  </div>
+                </div>
+              </article>
+            );
+          }}
           fromTransform="translateY(40px)"
           staggerDelay={150}
           className="space-y-8"

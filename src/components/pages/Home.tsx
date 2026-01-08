@@ -8,7 +8,7 @@ import { FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
 const PROFILE_IMAGE = './tech-icons/portrait.png';
 const GITHUB_LINK = "https://github.com/jnguy405";
 const LINKEDIN_LINK = "https://www.linkedin.com/in/jenalee-nguyen-195624314/";
-const RESUME_LINK = "https://docs.google.com/document/d/1d9D05vtv1GzTSOcKVSUvNU3i3A9ZpwDsu5yUtoDbTkY/edit?usp=sharing";
+const RESUME_LINK = "https://drive.google.com/file/d/1l-EDgjYgvfIpS4V3cYZi4VzaOKK9eomA/view?usp=sharing";
 
 type Project = {
   title: string;

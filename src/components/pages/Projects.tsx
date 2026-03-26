@@ -169,7 +169,7 @@ export function Projects() {
                          scroll-mt-20"
               >
                 <div className="mb-6">
-                  <h2 className="text-primary mb-2">{project.title}</h2>
+                  <h2 className="text-primary text-2xl mb-2" style={{ fontSize: '2rem' }}>{project.title}</h2>
                   <div className="flex flex-wrap gap-4 text-muted-foreground">
                     <span>{project.role}</span>
                     <span>•</span>

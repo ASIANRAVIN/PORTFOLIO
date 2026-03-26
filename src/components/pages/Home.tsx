@@ -30,6 +30,16 @@ type TechIcon = {
 
 const PROJECTS: Project[] = [
   {
+    title: "Balajong",
+    description: "Balajong is a strategy-based roguelike inspired by Playstack's Balatro gameplay and Cantonese Mahjong scoring. The game highlights elements of procedural generation and systems taught in Tyler Coleman's Generative Design course at UCSC and voted BEST OVERALL among 35 other student projects.",
+    role: "Systems Developer: Scoring & Consumables",
+    tech: ["Unity", "C#", "CSV Tables"],
+    imageUrl: "./game-thumbs/balajong.png",
+    repoLink: "https://github.com/mtang44/Balajong?tab=readme-ov-file", 
+    demoLink: "https://charlesser.itch.io/balajong", 
+    detailsLink: "Projects#balajong", 
+  },
+  {
     title: "Mini Mania",
     description: "Mini Mania is an immersive 3D escape-style adventure where players solve physics-based puzzles, manage economy, and obtain keys by winning. Features implemented include persistent inventory systems, dynamic theming across environments, and accessibility features such as multi-language support and save states.",
     role: "Tools Lead & System Developer",

@@ -31,7 +31,7 @@ type TechIcon = {
 const PROJECTS: Project[] = [
   {
     title: "Balajong",
-    description: "Balajong is a strategy-based roguelike inspired by Playstack's Balatro gameplay and Cantonese Mahjong scoring. The game highlights elements of procedural generation and systems taught in Tyler Coleman's Generative Design course at UCSC and voted BEST OVERALL among 35 other student projects.",
+    description: "Balajong is a strategy-based roguelike inspired by LocalThunk's Balatro gameplay and Cantonese Mahjong scoring. The game highlights elements of procedural generation and systems taught in Tyler Coleman's Generative Design course at UCSC and voted BEST OVERALL among 35 other student projects.",
     role: "Systems Developer: Scoring & Consumables",
     tech: ["Unity", "C#", "CSV Tables"],
     imageUrl: "./game-thumbs/balajong.png",

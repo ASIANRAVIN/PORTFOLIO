@@ -20,6 +20,30 @@ interface Project {
 export function Projects() {
   const detailedProjects: Project[] = [
     {
+      title: "Balajong",
+      role: "Systems Developer: Scoring & Consumables",
+      duration: "3 weeks",
+      team: "Team of 4",
+      description: "A roguelike-deckbuilder promoting procedural systems across enemy generation, map layouts, loot tables, and tile randomization. Balajong leverages class-based procedural generators for encounters, decks, jokers, consumables, and audio so every run offers unique synergies and strategic adaptation.",
+      contributions: [
+        "Implemented the Score system with bucket sort for meld type recognition, score updates, and meld info communication",
+        "Developed the Consumables system including consumable effects, inventory management, and bonus tile functionality",
+        "Managed project documentation including ideation, check-ins, notes, and playtest summaries to track development progress",
+        "Contributed to deck improvements and bonus tile enhancements to refine core gameplay mechanics",
+        "Facilitated team coordination through check-ins and synthesis of playtest feedback into actionable development priorities",
+      ],
+      technologies: ["Unity", "C#", "CSV Tables", "GitHub"],
+      achievements: "Engineered inventory persistence enabling player stats to persist across scene transitions and progression loops.",
+      images: [
+        "./projects/balajong1.png",
+        "./projects/balajong2.png",
+        "./projects/balajong3.png",
+        "./projects/balajong4.png"
+      ],
+      imageAlt: "Balajong screenshots"
+
+    },
+    {
       title: "Mini Mania",
       role: "Tools Lead & Systems Developer",
       duration: "3 Weeks",

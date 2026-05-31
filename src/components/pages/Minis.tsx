@@ -54,7 +54,7 @@ export function Minis() {
           fromTransform="translateY(20px)"
           className="mb-8"
         >
-          <h1 className="text-primary mb-2">Mini Projects</h1>
+          <h1 className="text-foreground mb-2">Mini Projects</h1>
           <p className="text-muted-foreground">
             Smaller experiments and prototypes exploring specific gameplay mechanics and systems
           </p>
@@ -66,7 +66,7 @@ export function Minis() {
           renderItem={(project: MiniProject, index: number) => (
             <div
               key={index}
-              className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow hover:border-primary/20 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
+              className="glass-panel p-6 hover:scale-[1.02] transition-all duration-300 group"
             >
               {/* Image container - replaces prototype text */}
               <div className="aspect-video rounded-md mb-4 overflow-hidden bg-muted">

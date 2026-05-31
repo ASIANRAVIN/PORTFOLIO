@@ -91,7 +91,8 @@ export function Home() {
         as="header"
         delay={0}
         fromTransform="translateY(30px)"
-        className="bg-primary text-primary-foreground py-12 px-6"
+        className="text-primary-foreground py-12 px-6"
+        style={{ background: "var(--gradient-primary)" }}
       >
         <div className="max-w-7xl mx-auto">
           <div className="ml-[2%]">
@@ -156,7 +157,7 @@ export function Home() {
           delay={100}
           className="mb-8"
         >
-          <div className="bg-accent/5 border border-accent/10 rounded-lg p-6">
+          <div className="glass-panel technologies-panel p-6">
             <h3 className="text-lg font-medium mb-1">Technologies</h3>
             <TechBar techIcons={TECH_ICONS} />
           </div>
@@ -167,10 +168,10 @@ export function Home() {
           delay={200}
           className="mb-8"
         >
-          <h2 className="text-primary mb-2">Featured Projects</h2>
+          <h2 className="text-foreground mb-2">Featured Projects</h2>
           <p className="text-muted-foreground">
             A selection of my game development work showcasing
-            gameplay programming and system design
+            gameplay programming and system design.
           </p>
         </AnimatedSection>
 
@@ -184,7 +185,6 @@ export function Home() {
               description={project.description}
               role={project.role}
               tech={project.tech}
-              // Pass the new link props:
               imageUrl={project.imageUrl}
               repoLink={project.repoLink}
               demoLink={project.demoLink}

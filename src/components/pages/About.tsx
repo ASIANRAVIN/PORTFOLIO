@@ -26,7 +26,7 @@ export function About() {
           fromOpacity={0.8}
           className="mb-8"
         >
-          <h1 className="text-primary mb-8">About Me</h1>
+          <h1 className="text-foreground mb-8">About Me</h1>
         </AnimatedSection>
         
         <div className="space-y-8">
@@ -34,7 +34,7 @@ export function About() {
           <AnimatedSection
             delay={100}
             fromOpacity={0.9}
-            className="bg-card border border-border rounded-lg p-8 hover:shadow-md transition-shadow"
+            className="glass-panel p-8"
           >
             <h2 className="text-primary mb-4">Background</h2>
             <p className="mb-4">
@@ -50,7 +50,7 @@ export function About() {
           <AnimatedSection
             delay={50}
             fromOpacity={0.9}
-            className="bg-card border border-border rounded-lg hover:shadow-md transition-shadow overflow-hidden"
+            className="glass-panel overflow-hidden"
           >
             <div
               className="flex justify-center"
@@ -72,7 +72,7 @@ export function About() {
           <AnimatedSection
             delay={200}
             fromOpacity={0.9}
-            className="bg-card border border-border rounded-lg p-8 hover:shadow-md transition-shadow"
+            className="glass-panel p-8"
           >
             <h2 className="text-primary mb-4">Skills</h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -105,7 +105,7 @@ export function About() {
           <AnimatedSection
             delay={300}
             fromOpacity={0.9}
-            className="bg-card border border-border rounded-lg p-8 hover:shadow-md transition-shadow"
+            className="glass-panel p-8"
           >
             <h2 className="text-primary mb-4">Philosophy</h2>
             <p>

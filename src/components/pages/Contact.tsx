@@ -94,7 +94,8 @@ export function Contact() {
         as="header"
         delay={0}
         fromTransform="translateY(30px)"
-        className="bg-primary text-primary-foreground py-12 px-6"
+        className="text-primary-foreground py-12 px-6"
+        style={{ background: "var(--gradient-primary)" }}
       >
         <div className="max-w-7xl mx-auto">
           <div className="ml-[2%]">
@@ -137,9 +138,9 @@ export function Contact() {
           delay={100}
           fromTransform="translateY(30px)"
         >
-          <div className="bg-accent/5 border border-accent/10 rounded-lg p-8">
+          <div className="glass-panel p-8">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-primary mb-2">Send me a message</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-2">Send me a message</h2>
               <p className="text-muted-foreground">
                 Fill out the form below and I'll get back to you as soon as possible
               </p>

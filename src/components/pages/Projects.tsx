@@ -147,7 +147,7 @@ export function Projects() {
           fromTransform="translateY(20px)"
           className="mb-8"
         >
-          <h1 className="text-primary mb-2">Project Details</h1>
+          <h1 className="text-foreground mb-2">Project Details</h1>
           <p className="text-muted-foreground">
             In-depth look at major game development projects with full context and contributions
           </p>
@@ -164,9 +164,7 @@ export function Projects() {
               <article
                 id={projectId}
                 key={index}
-                className="bg-card border border-border rounded-lg p-8 mb-8 
-                         hover:border-primary/30 hover:shadow-lg transition-all duration-300
-                         scroll-mt-20"
+                className="glass-panel p-8 mb-8 scroll-mt-20 transition-all duration-300"
               >
                 <div className="mb-6">
                   <h2 className="text-primary text-2xl mb-2" style={{ fontSize: '2rem' }}>{project.title}</h2>

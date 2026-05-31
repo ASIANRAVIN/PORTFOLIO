@@ -1,6 +1,7 @@
 import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
 import { AnimatedSection } from "../animation/AnimatedSection";
 import { AnimatedList } from "../animation/AnimatedList";
+import { ProjectImageGallery } from "../ProjectImageGallery";
 import { useEffect } from 'react';
 
 // Define the Project type interface
@@ -140,7 +141,7 @@ export function Projects() {
 
   return (
     <AnimatedPageWrapper>
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12 projects-page">
         {/* Page Header */}
         <AnimatedSection
           delay={0}
@@ -164,7 +165,7 @@ export function Projects() {
               <article
                 id={projectId}
                 key={index}
-                className="glass-panel p-8 mb-8 scroll-mt-20 transition-all duration-300"
+                className="glass-panel projects-article p-8 mb-8 scroll-mt-20 transition-all duration-300"
               >
                 <div className="mb-6">
                   <h2 className="text-primary text-2xl mb-2" style={{ fontSize: '2rem' }}>{project.title}</h2>
@@ -177,44 +178,12 @@ export function Projects() {
                   </div>
                 </div>
 
-                {/* Image Gallery - Replaces Project Screenshot */}
+                {/* Image Gallery */}
                 <div className="mb-6">
-                  <div className={`grid gap-4 ${project.images.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
-                    {project.images.map((image, imgIndex) => (
-                      <div 
-                        key={imgIndex}
-                        className="aspect-video rounded-md overflow-hidden bg-muted group relative"
-                      >
-                        <img 
-                          src={image} 
-                          alt={`${project.title} screenshot ${imgIndex + 1}`}
-                          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                          onError={(e) => {
-                            // Fallback if image fails to load
-                            const target = e.target as HTMLImageElement;
-                            target.src = `https://placehold.co/800x450/1a1a2e/6366f1?text=${encodeURIComponent(project.title)}+${imgIndex + 1}`;
-                            target.alt = `${project.title} placeholder image`;
-                          }}
-                        />
-                        {/* Image counter for multiple images */}
-                        {project.images.length > 1 && (
-                          <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                            {imgIndex + 1}/{project.images.length}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Single image variant without grid */}
-                  {project.images.length === 0 && (
-                    <div className="aspect-video bg-gradient-to-br from-muted/80 to-muted/40 rounded-md flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-lg mb-2 opacity-70">🖼️</div>
-                        <div className="text-muted-foreground">Project Screenshots Coming Soon</div>
-                      </div>
-                    </div>
-                  )}
+                  <ProjectImageGallery
+                    images={project.images}
+                    title={project.title}
+                  />
                 </div>
 
                 <div className="space-y-6">

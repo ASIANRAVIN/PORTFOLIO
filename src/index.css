@@ -1952,3 +1952,48 @@ html {
     font-size: 1.0625rem;
   }
 }
+
+/* Minis page cards */
+.mini-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.mini-card-title {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.mini-card-link {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  color: var(--primary);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mini-card-link svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.mini-card-link:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  transform: scale(1.05);
+}

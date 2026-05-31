@@ -91,60 +91,54 @@ export function Home() {
         as="header"
         delay={0}
         fromTransform="translateY(30px)"
-        className="text-primary-foreground py-12 px-6"
+        className="home-hero text-primary-foreground"
         style={{ background: "var(--gradient-primary)" }}
       >
-        <div className="max-w-7xl mx-auto">
-          <div className="ml-[2%]">
-            <div className="flex items-center justify-between">
-              {PROFILE_IMAGE && (
-                <div 
-                  className="mr-4 rounded-full overflow-hidden border border-accent/20" 
-                  style={{ width: 400, height: 400 }}
-                >
-                  <img
-                    src={PROFILE_IMAGE}
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              
-              <div className="text-right">
-                <h1 className="mb-2">Jenalee Nguyen</h1>
-                <p className="text-xl opacity-90 mb-4">Game Systems Programmer</p>
-                
-                {/* Add social icons here */}
-                <div className="flex justify-end gap-4">
-                  <a
-                    href={GITHUB_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover:scale-110"
-                    aria-label="GitHub Profile"
-                  >
-                    <FaGithub className="w-6 h-6" />
-                  </a>
-                  <a
-                    href={LINKEDIN_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover:scale-110"
-                    aria-label="LinkedIn Profile"
-                  >
-                    <FaLinkedin className="w-6 h-6" />
-                  </a>
-                  <a
-                    href={RESUME_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover:scale-110"
-                    aria-label="Download Resume"
-                  >
-                    <FaFilePdf className="w-6 h-6" />
-                  </a>
-                </div>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="home-hero-inner">
+            {PROFILE_IMAGE && (
+              <div className="home-hero-photo">
+                <img
+                  src={PROFILE_IMAGE}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
               </div>
+            )}
+
+            <div className="home-hero-content">
+              <h1 className="home-hero-name">Jenalee Nguyen</h1>
+              <p className="home-hero-title">Game Systems Programmer</p>
+            </div>
+
+            <div className="home-hero-social">
+              <a
+                href={GITHUB_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="home-hero-social-link"
+                aria-label="GitHub Profile"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href={LINKEDIN_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="home-hero-social-link"
+                aria-label="LinkedIn Profile"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href={RESUME_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="home-hero-social-link"
+                aria-label="Download Resume"
+              >
+                <FaFilePdf />
+              </a>
             </div>
           </div>
         </div>

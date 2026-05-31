@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Navigation } from './components/Navigation';
+import { SiteFooter } from './components/SiteFooter';
 import { Home } from './components/pages/Home';
 import { Contact } from './components/pages/Contact';
 import { About } from './components/pages/About';
@@ -91,13 +92,18 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="app-shell min-h-screen bg-background text-foreground">
       <Navigation 
         currentPage={currentPage} 
         onNavigate={handleNavigate}
         isLoading={isLoading}
       />
       {renderPage()}
+      <SiteFooter
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
+        isLoading={isLoading}
+      />
     </div>
   );
 }

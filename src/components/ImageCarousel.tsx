@@ -1,5 +1,4 @@
-// ImageCarousel.tsx - Updated with auto-play props
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 interface ImageCarouselProps {
@@ -8,135 +7,117 @@ interface ImageCarouselProps {
     alt: string;
   }[];
   className?: string;
-  autoPlayInterval?: number; // Add this
-  showControls?: boolean; // Add this
+  autoPlayInterval?: number;
+  showControls?: boolean;
 }
 
-export function ImageCarousel({ 
-  images, 
-  className = "", 
-  autoPlayInterval = 5000, // Default value
-  showControls = true // Default value
+export function ImageCarousel({
+  images,
+  className = "",
+  autoPlayInterval = 5000,
+  showControls = true,
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? images.length - 1 : prev - 1
-    );
-  };
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  }, [images.length]);
 
-  const goToNext = () => {
-    setCurrentIndex((prev) =>
-      prev === images.length - 1 ? 0 : prev + 1
-    );
-  };
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
 
-  // Auto-play effect
   useEffect(() => {
-    if (!isPlaying || images.length <= 1) return;
-    
+    setCurrentIndex(0);
+  }, [images]);
+
+  useEffect(() => {
+    if (!isPlaying || images.length <= 1) {
+      return;
+    }
+
     const interval = setInterval(goToNext, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [currentIndex, isPlaying, images.length, autoPlayInterval]);
+  }, [isPlaying, images.length, autoPlayInterval, goToNext]);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") goToPrevious();
-      if (e.key === "ArrowRight") goToNext();
-      if (e.key === " ") {
-        e.preventDefault();
-        setIsPlaying(!isPlaying);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        goToPrevious();
+      }
+      if (event.key === "ArrowRight") {
+        goToNext();
+      }
+      if (event.key === " ") {
+        event.preventDefault();
+        setIsPlaying((playing) => !playing);
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentIndex, isPlaying]);
+  }, [goToNext, goToPrevious]);
 
-  if (images.length === 0) return null;
+  if (images.length === 0) {
+    return null;
+  }
 
   return (
-    <div
-      className={`
-        relative
-        w-[500px]
-        h-[500px]
-        min-w-[500px]
-        min-h-[500px]
-        max-w-[500px]
-        max-h-[500px]
-        bg-black
-        overflow-hidden
-        ${className}
-      `}
-    >
-      {/* Black background layer */}
-      <div className="absolute inset-0 bg-black" />
-      
-      {/* Image container */}
-      <div className="absolute inset-0 flex items-center justify-center">
+    <div className={`image-carousel ${className}`.trim()}>
+      <div className="image-carousel-stage">
         <img
           src={images[currentIndex].src}
           alt={images[currentIndex].alt}
-          className="
-            block
-            max-w-full
-            max-h-full
-            object-contain
-            w-auto
-            h-auto
-            transition-opacity duration-500
-          "
+          className="image-carousel-image"
           draggable={false}
-          onLoad={(e) => {
-            const img = e.target as HTMLImageElement;
-            img.style.backgroundColor = 'black';
-          }}
         />
       </div>
 
-      {/* Navigation arrows (only show if showControls is true) */}
       {showControls && (
         <>
-          {/* Left Arrow */}
           <button
+            type="button"
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white p-2 rounded-full z-20 border border-white/20"
+            className="image-carousel-btn image-carousel-btn--prev"
+            aria-label="Previous image"
           >
             <ChevronLeft size={24} />
           </button>
 
-          {/* Right Arrow */}
           <button
+            type="button"
             onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white p-2 rounded-full z-20 border border-white/20"
+            className="image-carousel-btn image-carousel-btn--next"
+            aria-label="Next image"
           >
             <ChevronRight size={24} />
           </button>
         </>
       )}
 
-      {/* Play/Pause button */}
       {showControls && images.length > 1 && (
         <button
-          onClick={() => setIsPlaying(!isPlaying)}
-          className="absolute top-4 right-4 bg-black/80 hover:bg-black text-white p-2 rounded-full z-20 border border-white/20"
+          type="button"
+          onClick={() => setIsPlaying((playing) => !playing)}
+          className="image-carousel-btn image-carousel-btn--play"
+          aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
         >
           {isPlaying ? <Pause size={20} /> : <Play size={20} />}
         </button>
       )}
 
-      {/* Dots */}
       {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-          {images.map((_, i) => (
+        <div className="image-carousel-dots">
+          {images.map((_, index) => (
             <button
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`w-2 h-2 rounded-full ${
-                i === currentIndex ? "bg-white" : "bg-white/50"
+              key={index}
+              type="button"
+              onClick={() => setCurrentIndex(index)}
+              className={`image-carousel-dot${
+                index === currentIndex ? " image-carousel-dot--active" : ""
               }`}
+              aria-label={`Go to image ${index + 1}`}
             />
           ))}
         </div>

@@ -50,22 +50,13 @@ export function About() {
           <AnimatedSection
             delay={50}
             fromOpacity={0.9}
-            className="glass-panel overflow-hidden"
+            className="glass-panel about-carousel-section"
           >
-            <div
-              className="flex justify-center"
-              style={{
-                height: 500,
-                minHeight: 800,
-                maxHeight: 800,
-              }}
-            >
-              <ImageCarousel 
-                images={carouselImages}
-                autoPlayInterval={3000}
-                showControls={true}
-              />
-            </div>
+            <ImageCarousel
+              images={carouselImages}
+              autoPlayInterval={3000}
+              showControls={true}
+            />
           </AnimatedSection>
 
           {/* Skills Section */}

@@ -3,12 +3,23 @@ import { TechBar } from "../TechBar";
 import { AnimatedSection } from "../animation/AnimatedSection";
 import { AnimatedList } from "../animation/AnimatedList";
 import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
+import { TypewriterTitle } from "../animation/TypewriterTitle";
 import { FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
 
 const PROFILE_IMAGE = './tech-icons/portrait.png';
 const GITHUB_LINK = "https://github.com/jnguy405";
 const LINKEDIN_LINK = "https://www.linkedin.com/in/jenalee-nguyen-195624314/";
 const RESUME_LINK = "https://drive.google.com/file/d/10fPYOXYGbWZ9sGDEB3RLhF1PNP6uqeId/view?usp=sharing";
+
+const HERO_TITLES = [
+  "Game Systems Programmer",
+  "Game AI Undergrad Researcher",
+  "Slug Gaming Content Manager",
+  "Collegiate Rainbow Six Siege Esports",
+  "Life, Skincare, & Cosmetics Content Creator",
+  "Social Media & Community Engagement Intern",
+  "Coffee Enthusiast",
+];
 
 type Project = {
   title: string;
@@ -108,7 +119,7 @@ export function Home() {
 
             <div className="home-hero-content">
               <h1 className="home-hero-name">Jenalee Nguyen</h1>
-              <p className="home-hero-title">Game Systems Programmer</p>
+              <TypewriterTitle titles={HERO_TITLES} className="home-hero-title" />
             </div>
 
             <div className="home-hero-social">

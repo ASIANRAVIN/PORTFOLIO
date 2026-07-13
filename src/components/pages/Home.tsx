@@ -6,7 +6,7 @@ import { AnimatedPageWrapper } from "../animation/AnimatedPageWrapper";
 import { TypewriterTitle } from "../animation/TypewriterTitle";
 import { FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
 
-const PROFILE_IMAGE = './tech-icons/portrait.png';
+const PROFILE_IMAGE = './tech-icons/JAY KIM PROFILE PROF PIC.png';
 const GITHUB_LINK = "https://github.com/ASIANRAVIN";
 const LINKEDIN_LINK = "https://www.linkedin.com/in/asianravin";
 const RESUME_LINK = "https://drive.google.com/drive/u/0/folders/1A7x2uuODnJOQ6UE2rA3AkiFHcBaFgRVC";

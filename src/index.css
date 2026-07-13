@@ -1707,6 +1707,9 @@ html {
 }
 
 /* Navigation — hamburger on mobile, inline links on desktop */
+.portfolio-nav {
+  background-color: #7BA6DE !important;
+}
 .portfolio-nav-toggle {
   display: flex;
   align-items: center;

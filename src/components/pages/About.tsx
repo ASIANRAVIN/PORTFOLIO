@@ -38,11 +38,10 @@ export function About() {
           >
             <h2 className="text-primary mb-4">Background</h2>
             <p className="mb-4">
-              I'm a 3rd year Computer Science Game Design major with a specialization in gameplay programming with additional practice in UX/UI design, level design, and narrative structures. My passion lies in creating 
-              engaging game mechanics along with developing functional, reusable tools and polished player experiences which bring multifaceted game worlds to life.
+              I'm a 2nd year Communications major with a specialization in gameplay with additional practice in eSports. My passion lies in playing engaging games along with playing sports in the world.
             </p>
             <p>
-              Creeping upon these pursuits, I spend time editing and managing content for Slug Gaming at UC Santa Cruz, competing in the collegiate Rainbow 6 Siege scene alongside UCSC Amber, and creating Life, Skincare, & Cosmetics content on Instagram and TikTok.
+              Creeping upon these pursuits, I spend time editing and managing content for my Social media and YouTube Channel at Santa Monica, watching Kpop music videos alongside SMC work, and creating Kpop and other content on Instagram and YouTube.
             </p>
           </AnimatedSection>
 

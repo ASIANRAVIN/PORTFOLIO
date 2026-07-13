@@ -14,19 +14,19 @@ type ContactData = {
 };
 
 const CONTACT_DATA: ContactData = {
-  email: "jenaleetngu@gmail.com",
+  email: "jkim4869it@gmail.com",
   socialLinks: {
-    github: "https://github.com/jnguy405",
-    linkedin: "https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile",
+    github: "https://github.com/ASIANRAVIN",
+    linkedin: "https://www.linkedin.com/in/asianravin",
   },
-  location: "Santa Cruz, CA",
+  location: "Santa Monica, CA",
 };
 
 // EmailJS Configuration
 const EMAILJS_CONFIG = {
-  SERVICE_ID: 'service_8anq6k3',      
-  TEMPLATE_ID: 'template_tpzzq5g',    
-  PUBLIC_KEY: 'HKqQ-KFEQ-wlkfGzP',   
+  SERVICE_ID: 'service_g1rw9z8',      
+  TEMPLATE_ID: 'template_cvynpen',    
+  PUBLIC_KEY: 'Cnz4Ysbsw4xS4wFHt',   
 };
 
 export function Contact() {

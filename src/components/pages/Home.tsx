@@ -122,7 +122,8 @@ export function Home() {
 
             <div className="home-hero-social">
               
-                href={GITHUB_LINK}
+                <a 
+                  href={GITHUB_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="home-hero-social-link"
@@ -131,7 +132,8 @@ export function Home() {
                 <FaGithub />
               </a>
               
-                href={LINKEDIN_LINK}
+                <a 
+                  href={LINKEDIN_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="home-hero-social-link"
@@ -140,7 +142,8 @@ export function Home() {
                 <FaLinkedin />
               </a>
               
-                href={RESUME_LINK}
+                <a 
+                  href={RESUME_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="home-hero-social-link"

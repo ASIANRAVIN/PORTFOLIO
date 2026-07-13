@@ -97,11 +97,15 @@ export function About() {
             fromOpacity={0.9}
             className="glass-panel p-8"
           >
-            <h2 className="text-primary mb-4">Philosophy</h2>
+           <h2 className="text-primary mb-4">Philosophy</h2>
+            <p className="mb-4">
+              I'm EXTREMELY excited to announce I have created a website for myself! I will start updating and it can't come soon enough.
+            </p>
+            <p className="mb-4">
+              To say I am thankful is an understatement. I have worked so hard and to make it such an amazing website is a gift.
+            </p>
             <p>
-              I believe great gameplay emerges from the intersection of accessible technical implementation and 
-              user-centered design. Every system should serve the player experience, and every line of code 
-              should contribute to making the game more engaging, intuitive, and fun.
+              WORLD, here I come.
             </p>
           </AnimatedSection>
         </div>

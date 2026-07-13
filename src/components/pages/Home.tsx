@@ -9,7 +9,7 @@ import { FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
 const PROFILE_IMAGE = './tech-icons/JAY KIM PROFILE PROF PIC.png';
 const GITHUB_LINK = "https://github.com/ASIANRAVIN";
 const LINKEDIN_LINK = "https://www.linkedin.com/in/asianravin";
-const RESUME_LINK = "https://drive.google.com/drive/u/0/folders/1A7x2uuODnJOQ6UE2rA3AkiFHcBaFgRVC";
+const RESUME_LINK = "https://drive.google.com/file/d/1uMek7sP-sFBYGtHUCkTdoEdTjISL8Qir/view?usp=sharing";
 
 const HERO_TITLES = [
   "Communications Major",

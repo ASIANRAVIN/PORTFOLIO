@@ -164,7 +164,7 @@ export function Home() {
           className="mb-8"
         >
           <div className="glass-panel technologies-panel p-6">
-            <h3 className="text-lg font-medium mb-1">Technologies</h3>
+            <h3 className="text-lg font-medium mb-1">Find Me Here</h3>
             <TechBar techIcons={TECH_ICONS} />
           </div>
         </AnimatedSection>

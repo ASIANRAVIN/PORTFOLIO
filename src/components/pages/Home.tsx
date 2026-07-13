@@ -101,7 +101,7 @@ export function Home() {
         delay={0}
         fromTransform="translateY(30px)"
         className="home-hero text-primary-foreground"
-        style={{ background: "var(--gradient-primary)" }}
+        style={{ background: ""linear-gradient(135deg, #3a0000 0%, #8b0000 15%, #ff4d4d 30%, #b30000 45%, #ff8080 55%, #8b0000 70%, #3a0000 85%, #8b0000 100%)" }}
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="home-hero-inner">
